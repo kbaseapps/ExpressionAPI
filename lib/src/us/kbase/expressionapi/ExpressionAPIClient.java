@@ -16,7 +16,6 @@ import us.kbase.common.service.UnauthorizedException;
 /**
  * <p>Original spec-file module name: ExpressionAPI</p>
  * <pre>
- * A KBase module: ExpressionAPI
  * </pre>
  */
 public class ExpressionAPIClient {
@@ -176,6 +175,23 @@ public class ExpressionAPIClient {
         args.add(params);
         TypeReference<List<GetDiffExprMatrixOutput>> retType = new TypeReference<List<GetDiffExprMatrixOutput>>() {};
         List<GetDiffExprMatrixOutput> res = caller.jsonrpcCall("ExpressionAPI.get_differentialExpressionMatrixSet", args, retType, true, true, jsonRpcContext, this.serviceVersion);
+        return res.get(0);
+    }
+
+    /**
+     * <p>Original spec-file function name: get_enhancedFilteredExpressionMatrix</p>
+     * <pre>
+     * </pre>
+     * @param   params   instance of type {@link us.kbase.expressionapi.GetEnhancedFEMParams GetEnhancedFEMParams} (original type "getEnhancedFEMParams")
+     * @return   instance of type {@link us.kbase.expressionapi.GetEnhancedFEMOutput GetEnhancedFEMOutput} (original type "getEnhancedFEMOutput")
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public GetEnhancedFEMOutput getEnhancedFilteredExpressionMatrix(GetEnhancedFEMParams params, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(params);
+        TypeReference<List<GetEnhancedFEMOutput>> retType = new TypeReference<List<GetEnhancedFEMOutput>>() {};
+        List<GetEnhancedFEMOutput> res = caller.jsonrpcCall("ExpressionAPI.get_enhancedFilteredExpressionMatrix", args, retType, true, true, jsonRpcContext, this.serviceVersion);
         return res.get(0);
     }
 

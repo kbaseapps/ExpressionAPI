@@ -2,6 +2,8 @@
 A KBase module: ExpressionAPI
 */
 
+#include <KBaseFeatureValues.spec>
+
 module ExpressionAPI {
     /*
         Get Differential Expression Matrix from Expression Set input
@@ -27,4 +29,24 @@ module ExpressionAPI {
     funcdef  get_differentialExpressionMatrixSet(getDiffExprMatrixParams params)
                                         returns (getDiffExprMatrixOutput)
                                         authentication required;
+
+    /**
+        Input parameters and method for getting the enhanced Filtered Expresion Matrix
+        for viewing
+    **/
+
+    typedef structure {
+        string  fem_object_ref;
+    } getEnhancedFEMParams;
+
+    typedef structure {
+        KBaseFeatureValues.ExpressionMatrix  enhanced_FEM;
+    } getEnhancedFEMOutput;
+
+
+    funcdef  get_enhancedFilteredExpressionMatrix( getEnhancedFEMParams params )
+                                   returns (getEnhancedFEMOutput)
+                                   authentication required;
+                                    
+
 };
