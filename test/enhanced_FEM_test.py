@@ -60,7 +60,6 @@ class ExprMatrixUtilsTest(unittest.TestCase):
         cls.serviceWizardURL = cls.cfg['srv-wiz-url']                                                                     
         print "### serviceWizardURL = {0}".format( cls.serviceWizardURL )
         cls.gaa = GenomeAnnotationAPI( cls.serviceWizardURL ) 
-        #cls.gaa = GenomeAnnotationAPI( cls.callback_url )
         cls.setupdata()
 
     @classmethod
