@@ -337,6 +337,10 @@ class Application(object):
                              name='ExpressionAPI.get_differentialExpressionMatrixSet',
                              types=[dict])
         self.method_authentication['ExpressionAPI.get_differentialExpressionMatrixSet'] = 'required'  # noqa
+        self.rpc_service.add(impl_ExpressionAPI.get_enhancedFilteredExpressionMatrix,
+                             name='ExpressionAPI.get_enhancedFilteredExpressionMatrix',
+                             types=[dict])
+        self.method_authentication['ExpressionAPI.get_enhancedFilteredExpressionMatrix'] = 'required'  # noqa
         self.rpc_service.add(impl_ExpressionAPI.status,
                              name='ExpressionAPI.status',
                              types=[dict])
