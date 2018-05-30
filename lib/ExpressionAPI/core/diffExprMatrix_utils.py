@@ -25,7 +25,6 @@ class DiffExprMatrixUtils:
         self.ws_client = Workspace(self.ws_url)
         self.serviceWizardURL = config['srv-wiz-url']
         self.gaa = GenomeAnnotationAPI( self.serviceWizardURL )
-        #self.gaa = GenomeAnnotationAPI( os.environ['SDK_CALLBACK_URL'] )
         self._mkdir_p(self.scratch)
         pass
 

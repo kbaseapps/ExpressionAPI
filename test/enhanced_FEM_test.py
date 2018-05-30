@@ -50,7 +50,7 @@ class ExprMatrixUtilsTest(unittest.TestCase):
         cls.wsURL = cls.cfg['workspace-url']
         cls.wsClient = workspaceService(cls.wsURL)
         suffix = int(time.time() * 1000)
-        cls.wsName = "test_exprMatrixUtils_" + str(suffix)
+        cls.wsName = "test_exprAPI_FEM_test_ws_" + str(suffix)
         cls.wsClient.create_workspace({'workspace': cls.wsName})
         cls.serviceImpl = ExpressionAPI(cls.cfg)
         cls.scratch = cls.cfg['scratch']
@@ -60,7 +60,6 @@ class ExprMatrixUtilsTest(unittest.TestCase):
         cls.serviceWizardURL = cls.cfg['srv-wiz-url']                                                                     
         print "### serviceWizardURL = {0}".format( cls.serviceWizardURL )
         cls.gaa = GenomeAnnotationAPI( cls.serviceWizardURL ) 
-        #cls.gaa = GenomeAnnotationAPI( cls.callback_url )
         cls.setupdata()
 
     @classmethod
