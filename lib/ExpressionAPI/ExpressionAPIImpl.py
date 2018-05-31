@@ -143,7 +143,7 @@ class ExpressionAPI:
         # return variables are: returnVal
         #BEGIN get_enhancedFilteredExpressionMatrix
 
-        efem = self.diffexpr_matrix_utils.get_enhancedFEM( params )
+        efem = self.diffexpr_matrix_utils.get_enhancedFEM( params, ctx['token'] )
 
         returnVal = { 'enhanced_FEM': efem }
 

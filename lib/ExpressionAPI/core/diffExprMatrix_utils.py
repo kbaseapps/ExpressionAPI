@@ -24,7 +24,6 @@ class DiffExprMatrixUtils:
         self.ws_url = config['workspace-url']
         self.ws_client = Workspace(self.ws_url)
         self.serviceWizardURL = config['srv-wiz-url']
-        self.gaa = GenomeAnnotationAPI( self.serviceWizardURL )
         self._mkdir_p(self.scratch)
         pass
 
@@ -174,7 +173,7 @@ class DiffExprMatrixUtils:
         return dem_dict
 
 
-    def get_enhancedFEM( self, params ):
+    def get_enhancedFEM( self, params, tok ):
         """
         implements get_enhancedFilteredExpressionMatrix() method
         """
@@ -222,7 +221,9 @@ class DiffExprMatrixUtils:
 
         # Get genome object and feature descriptions as a handy feature-indexed dict
 
-        feat_dict = self.gaa.get_feature_functions( { 'ref': fem.get( 'genome_ref' ), 'feature_id_list': None } )
+        # moved from constructor
+        gaa = GenomeAnnotationAPI( self.serviceWizardURL, token=tok )
+        feat_dict = gaa.get_feature_functions( { 'ref': fem.get( 'genome_ref' ), 'feature_id_list': None } )
 
         # if this FEM has a "resolved_ws_objects" record in its provenance,
         # then that should be a list of one DEM reference from which we get the FC and q values
