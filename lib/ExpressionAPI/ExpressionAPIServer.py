@@ -17,6 +17,7 @@ import requests as _requests
 import random as _random
 import os
 from ExpressionAPI.authclient import KBaseAuth as _KBaseAuth
+from pprint import pprint, pformat
 
 DEPLOY = 'KB_DEPLOYMENT_CONFIG'
 SERVICE = 'KB_SERVICE_NAME'
@@ -71,6 +72,7 @@ class JSONRPCServiceCustom(JSONRPCService):
         Arguments:
         jsondata -- remote method call in jsonrpc format
         """
+        print( "### JSONRPCServiceCustom.call() ctx = {0}\njsondata = {1}".format( pformat( ctx ), pformat( jsondata ) ) )
         result = self.call_py(ctx, jsondata)
         if result is not None:
             return json.dumps(result, cls=JSONObjectEncoder)
@@ -79,9 +81,11 @@ class JSONRPCServiceCustom(JSONRPCService):
 
     def _call_method(self, ctx, request):
         """Calls given method with given params and returns it value."""
+        print( "### JSONRPCServiceCustom._call_method() ctx = {0}\nrequest = {1}".format( pformat( ctx ), pformat( request ) ) )
         method = self.method_data[request['method']]['method']
         params = request['params']
         result = None
+        print( "### JSONRPCServiceCustom._call_method() params = {0}".format( pformat( params ) ) )
         try:
             if isinstance(params, list):
                 # Does it have enough arguments?
@@ -126,6 +130,7 @@ class JSONRPCServiceCustom(JSONRPCService):
         object instead of JSON string. This method is mainly only useful for
         debugging purposes.
         """
+        print( "### JSONRPCServiceCustom.call_py() ctx = {0}\njsondata = {1}".format( pformat( ctx ), pformat( jsondata ) ) )
         rdata = jsondata
         # we already deserialize the json string earlier in the server code, no
         # need to do it again
@@ -175,6 +180,8 @@ class JSONRPCServiceCustom(JSONRPCService):
 
     def _handle_request(self, ctx, request):
         """Handles given request and returns its response."""
+        print( "### JSONRPCServiceCustom._handle_requesrt() ctx = {0}\nrequst = {1}".format( pformat( ctx ), pformat( request ) ) )
+
         if self.method_data[request['method']].has_key('types'):  # noqa @IgnorePep8
             self._validate_params_types(request['method'], request['params'])
 
