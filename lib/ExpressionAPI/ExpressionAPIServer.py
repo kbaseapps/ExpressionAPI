@@ -72,7 +72,7 @@ class JSONRPCServiceCustom(JSONRPCService):
         Arguments:
         jsondata -- remote method call in jsonrpc format
         """
-        print >> sys.stderr, "### JSONRPCServiceCustom.call() ctx = {0}\njsondata = {1}".format( pformat( ctx ), pformat( jsondata ) )
+        print >>sys.stderr, "### JSONRPCServiceCustom.call() ctx = {0}\njsondata = {1}".format( pformat( ctx ), pformat( jsondata ) )
         result = self.call_py(ctx, jsondata)
         if result is not None:
             return json.dumps(result, cls=JSONObjectEncoder)
