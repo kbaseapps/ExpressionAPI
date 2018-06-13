@@ -22,7 +22,6 @@ class DiffExprMatrixUtils:
         self.logger = logger
         self.scratch = os.path.join(config['scratch'], 'DEM_' + str(uuid.uuid4()))
         self.ws_url = config['workspace-url']
-        self.ws_client = Workspace(self.ws_url)
         self.serviceWizardURL = config['srv-wiz-url']
         self._mkdir_p(self.scratch)
         pass
@@ -177,6 +176,8 @@ class DiffExprMatrixUtils:
         """
         implements get_enhancedFilteredExpressionMatrix() method
         """
+
+        self.ws_client = Workspace( self.ws_url, token=tok )
 
         if 'fem_object_ref' not in params:
             raise ValueError( "fem_object_ref parameter not given to get_enhancedFilteredExpressionMatrix" )
