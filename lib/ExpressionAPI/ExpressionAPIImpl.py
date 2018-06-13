@@ -5,7 +5,6 @@ import os
 import sys
 import time
 from core.diffExprMatrix_utils import DiffExprMatrixUtils
-from pprint import pformat
 #END_HEADER
 
 
@@ -143,7 +142,6 @@ class ExpressionAPI:
         # ctx is the context object
         # return variables are: returnVal
         #BEGIN get_enhancedFilteredExpressionMatrix
-        self.__LOGGER.info("Impl: get_enhancedFilteredExpressionMatrix() ctx = {0}\nparams= {1}".format( pformat( ctx ), pformat( params ) ) )
 
         efem = self.diffexpr_matrix_utils.get_enhancedFEM( params, ctx['token'] )
 
